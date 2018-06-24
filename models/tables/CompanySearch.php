@@ -5,12 +5,11 @@ namespace app\models\tables;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\tables\company;
 
 /**
  * CompanySearch represents the model behind the search form of `app\models\tables\company`.
  */
-class CompanySearch extends company
+class CompanySearch extends Company
 {
     public $contact_name;
     public $contact_phone;
@@ -68,19 +67,19 @@ class CompanySearch extends company
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
+            '`company`.id' => $this->id,
             'inn' => $this->inn,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
+        $query->andFilterWhere(['like', '`company`.name', $this->name])
             ->andFilterWhere(['like', 'director', $this->director])
             ->andFilterWhere(['like', 'address', $this->address])
             ->andFilterWhere(['like', 'status', $this->status])
-            ->andFilterWhere(['like', '`contact`.name', $this->contact_name])
-            ->andFilterWhere(['like', '`contact`.phone', $this->contact_phone])
-            ->andFilterWhere(['like', '`contact`.email', $this->contact_email]);
+            ->andFilterWhere(['like', 'contact.name', $this->contact_name])
+            ->andFilterWhere(['like', 'contact.phone', $this->contact_phone])
+            ->andFilterWhere(['like', 'contact.email', $this->contact_email]);
 
         return $dataProvider;
     }

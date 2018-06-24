@@ -29,7 +29,7 @@ use yii\widgets\ActiveForm;
         echo $form->field($model, 'status')->dropDownList([
             'Подтверждено' => 'Подтверждено',
             'Отклонено' => 'Отклонено',
-            'Ожидание' => 'Ожидание',
+            'В ожидании' => 'В ожидании',
         ],
             $params = [
                 'prompt' => 'Выберите статус...'

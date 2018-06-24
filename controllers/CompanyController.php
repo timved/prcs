@@ -5,7 +5,7 @@ namespace app\controllers;
 use app\models\tables\CompanyForm;
 use app\models\tables\Contact;
 use Yii;
-use app\models\tables\company;
+use app\models\tables\Company;
 use app\models\tables\CompanySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
