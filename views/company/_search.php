@@ -15,8 +15,6 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
-
     <?= $form->field($model, 'name') ?>
 
     <?= $form->field($model, 'inn') ?>
@@ -25,11 +23,19 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'address') ?>
 
-    <?php // echo $form->field($model, 'status') ?>
+    <?= $form->field($model, 'contact_name') ?>
 
-    <?php // echo $form->field($model, 'created_at') ?>
-
-    <?php // echo $form->field($model, 'updated_at') ?>
+    <?php if (Yii::$app->user->can('create')){
+        echo $form->field($model, 'status')->dropDownList([
+            'Подтверждено' => 'Подтверждено',
+            'Отклонено' => 'Отклонено',
+            'Ожидание' => 'Ожидание',
+        ],
+            $params = [
+                'prompt' => 'Выберите статус...'
+            ]);
+    }
+    ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

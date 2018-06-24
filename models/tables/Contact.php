@@ -50,9 +50,9 @@ class Contact extends ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'phone' => 'Phone',
-            'email' => 'Email',
+            'name' => 'Контактное лицо',
+            'phone' => 'Телефон',
+            'email' => 'E-mail',
             'company_id' => 'Company ID',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',

@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\tables\UserSearch */
+/* @var $searchModel app\models\tables\ContactSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Пользователи';
+$this->title = 'Contacts';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="user-index">
+<div class="contact-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
 
     <p>
-        <?= Html::a('Создать пользователя', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Contact', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -26,10 +26,11 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'username',
-            'password',
-            'role_id',
-            'created_at',
+            'name',
+            'phone',
+            'email:email',
+            'company_id',
+            //'created_at',
             //'updated_at',
 
             ['class' => 'yii\grid\ActionColumn'],

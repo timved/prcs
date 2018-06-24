@@ -46,10 +46,10 @@ class User extends ActiveRecord
     {
         return [
             'id' => 'ID',
-            'username' => 'login',
-            'password' => 'Password',
-            'repPassword' => 'Repeat password',
-            'role_id' => 'Status',
+            'username' => 'Логин',
+            'password' => 'Пароль',
+            'repPassword' => 'Повторите пароль',
+            'role_id' => 'Статус',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];

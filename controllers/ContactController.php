@@ -2,19 +2,17 @@
 
 namespace app\controllers;
 
-use app\models\tables\CompanyForm;
-use app\models\tables\Contact;
 use Yii;
-use app\models\tables\company;
-use app\models\tables\CompanySearch;
+use app\models\tables\Contact;
+use app\models\tables\ContactSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * CompanyController implements the CRUD actions for company model.
+ * ContactController implements the CRUD actions for Contact model.
  */
-class CompanyController extends Controller
+class ContactController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -32,13 +30,14 @@ class CompanyController extends Controller
     }
 
     /**
-     * Lists all company models.
+     * Lists all Contact models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new CompanySearch();
+        $searchModel = new ContactSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -46,7 +45,7 @@ class CompanyController extends Controller
     }
 
     /**
-     * Displays a single company model.
+     * Displays a single Contact model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -59,16 +58,15 @@ class CompanyController extends Controller
     }
 
     /**
-     * Creates a new company model.
+     * Creates a new Contact model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new CompanyForm();
-        $model->checkRole();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            $model->createCompany();
+        $model = new Contact();
+        $model->company_id = Yii::$app->request->queryParams['id'];
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -78,7 +76,7 @@ class CompanyController extends Controller
     }
 
     /**
-     * Updates an existing company model.
+     * Updates an existing Contact model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -88,10 +86,7 @@ class CompanyController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if (\Yii::$app->user->can('redactor')){
-                $model->status = 'В ожидании';}
-                $model->save();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -101,7 +96,7 @@ class CompanyController extends Controller
     }
 
     /**
-     * Deletes an existing company model.
+     * Deletes an existing Contact model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -115,15 +110,15 @@ class CompanyController extends Controller
     }
 
     /**
-     * Finds the company model based on its primary key value.
+     * Finds the Contact model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return company the loaded model
+     * @return Contact the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = company::findOne($id)) !== null) {
+        if (($model = Contact::findOne($id)) !== null) {
             return $model;
         }
 

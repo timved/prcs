@@ -20,6 +20,11 @@ use Yii;
  */
 class Company extends ActiveRecord
 {
+//    public $contact_name;
+//    public $contact;
+//    public $contactPhone;
+//    public $contactEmail;
+
     /**
      * {@inheritdoc}
      */
@@ -50,13 +55,17 @@ class Company extends ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'inn' => 'Inn',
-            'director' => 'Director',
-            'address' => 'Address',
-            'status' => 'Status',
+            'name' => 'Название',
+            'inn' => 'ИНН',
+            'director' => 'Генеральный директор',
+            'address' => 'Адрес',
+            'status' => 'Статус',
+//            'contact_name' => 'contact_name',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
+
+//            'contactPhone' => 'Телефон',
+//            'contactEmail' => 'E-mail',
         ];
     }
 
